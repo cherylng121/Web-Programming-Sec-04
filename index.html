@@ -17,19 +17,24 @@
       display: grid;
       grid-template-areas:
         "header header header"
-        "left-menu content right-menu"
+        "content content right-menu"
         "footer footer footer";
-      grid-template-columns: 1fr 3fr 1fr;
+      grid-template-columns: 1fr 2fr 1fr;
       grid-template-rows: auto 1fr auto;
       min-height: 100vh;
     }
 
-    /* Header area styling */
     .header { 
       grid-area: header;
+      position: relative;
       background: url('https://shorturl.at/LjXtI') center/cover no-repeat; 
       height: 400px;
+      padding-top: 50px; /* Add padding to account for the navigation bar */
+    }
+    
+    .header-content {
       display: flex;
+      height: 100%;
       align-items: center;
       justify-content: center;
       text-align: center;
@@ -40,14 +45,51 @@
       font-family: 'Times New Roman', Times, serif; 
       font-size: 3em;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      z-index: 1;
+    }
+    
+    /* Top navigation bar styling */
+    .top-nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(120, 15, 64, 0.9);
+      padding: 15px 0;
+      z-index: 10;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    
+    .top-nav ul {
+      display: flex;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      justify-content: center;
+      gap: 40px;
+    }
+    
+    .top-nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: all 0.3s;
+      padding: 8px 15px;
+      border-radius: 4px;
+    }
+    
+    .top-nav a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      text-decoration: none;
     }
 
-    /* Left menu styling */
-    .left-menu {
-      grid-area: left-menu;
+    /* Right menu styling */
+    .right-menu {
+      grid-area: right-menu;
       background-color: #f8f8f8;
       padding: 20px;
-      border-right: 1px solid #eee;
+      border-left: 1px solid #eee;
     }
     
     .menu-section {
@@ -77,39 +119,6 @@
     
     .menu-section a:hover {
       color: #0056b3;
-    }
-
-    /* Right menu styling */
-    .right-menu {
-      grid-area: right-menu;
-      background-color: #f8f8f8;
-      padding: 20px;
-      border-left: 1px solid #eee;
-    }
-    
-    .quick-links h3 {
-      color: #780f40;
-      border-bottom: 2px solid #780f40;
-      padding-bottom: 10px;
-    }
-    
-    .quick-links ul {
-      list-style-type: none;
-      padding-left: 10px;
-    }
-    
-    .quick-links li {
-      margin-bottom: 10px;
-    }
-    
-    .social-links {
-      margin-top: 40px;
-    }
-    
-    .social-links h3 {
-      color: #780f40;
-      border-bottom: 2px solid #780f40;
-      padding-bottom: 10px;
     }
 
     /* Main content styling */
@@ -241,7 +250,6 @@
       .grid-container {
         grid-template-areas:
           "header"
-          "left-menu"
           "content"
           "right-menu"
           "footer";
@@ -256,39 +264,46 @@
       .profile-image {
         margin: 0 auto;
       }
+      
+      .top-nav {
+        position: static;
+        width: 100%;
+        padding: 10px 0;
+      }
+      
+      .top-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+      
+      .top-nav a {
+        padding: 5px 10px;
+        font-size: 14px;
+      }
     }
   </style>
 </head>
 <body>
   <!-- Main grid container for the entire page layout -->
   <div class="grid-container">
-    <!-- Header Section -->
+    <!-- Header Section with Top Navigation -->
     <header class="header">
-      <h1>Welcome to Group BlaBlaBla's Personal Page</h1>
-    </header>
-    
-    <!-- Left Menu Navigation -->
-    <nav class="left-menu">
-      <div class="menu-section">
-        <h3>Navigation</h3>
+      <!-- Top navigation bar -->
+      <nav class="top-nav">
         <ul>
           <li><a href="#profile-led">Lim En Dhong</a></li>
-          <li><a href="#profile-friend1">Friend One</a></li>
-          <li><a href="#profile-friend2">Friend Two</a></li>
+          <li><a href="#profile-friend1">Ng Jin En</a></li>
+          <li><a href="#profile-friend2">Yeo Wern Min</a></li>
           <li><a href="#interests">Our Interests</a></li>
+          <li><a href="#contact">Contact Us</a></li>
         </ul>
-      </div>
+      </nav>
       
-      <div class="menu-section">
-        <h3>Academic Links</h3>
-        <ul>
-          <li><a href="https://www.utm.my">UTM Website</a></li>
-          <li><a href="https://fc.utm.my">Faculty of Computing</a></li>
-          <li><a href="#">Student Portal</a></li>
-          <li><a href="#">Academic Calendar</a></li>
-        </ul>
+      <div class="header-content">
+        <h1>Welcome to Group BlaBlaBla's Personal Page</h1>
       </div>
-    </nav>
+    </header>
     
     <!-- Main Content Area -->
     <main class="content">
@@ -370,7 +385,7 @@
     
     <!-- Right Menu Sidebar -->
     <aside class="right-menu">
-      <div class="quick-links">
+      <div class="menu-section">
         <h3>Quick Links</h3>
         <ul>
           <li><a href="#">Recent Projects</a></li>
@@ -380,7 +395,7 @@
         </ul>
       </div>
       
-      <div class="social-links">
+      <div class="menu-section">
         <h3>Connect With Us</h3>
         <ul>
           <li><a href="#">GitHub</a></li>
@@ -389,10 +404,20 @@
           <li><a href="#">Twitter</a></li>
         </ul>
       </div>
+      
+      <div class="menu-section">
+        <h3>Academic Links</h3>
+        <ul>
+          <li><a href="https://www.utm.my">UTM Website</a></li>
+          <li><a href="https://fc.utm.my">Faculty of Computing</a></li>
+          <li><a href="#">Student Portal</a></li>
+          <li><a href="#">Academic Calendar</a></li>
+        </ul>
+      </div>
     </aside>
     
     <!-- Footer Section -->
-    <footer class="footer">
+    <footer id="contact" class="footer">
       <img src="https://shorturl.at/Jckrh" class="university-logo" alt="University Logo">
       
       <div class="contact">
