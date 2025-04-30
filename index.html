@@ -88,7 +88,7 @@
     .left-menu {
       grid-area: left-menu;
       background-color: #f8f8f8;
-      padding: 20px;
+      padding: 10px;
       border-right: 1px solid #eee;
     }
     
@@ -96,12 +96,12 @@
     .right-menu {
       grid-area: right-menu;
       background-color: #f8f8f8;
-      padding: 20px;
+      padding: 10px;
       border-left: 1px solid #eee;
     }
     
     .menu-section {
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
     
     .menu-section h3 {
@@ -219,15 +219,24 @@
     .footer {
       grid-area: footer;
       display: flex; 
+      flex-direction: column;
       background-color: #780f40; 
       color: white; 
-      padding: 100px 50px;
+      padding: 80px 50px 20px;
+      align-items: center;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 18px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    
+    .footer-content {
+      display: flex;
       justify-content: center;
       align-items: center;
       gap: 40px;
-      font-family: 'Times New Roman', Times, serif;
-      font-size: 18px;
       flex-wrap: wrap;
+      margin-bottom: 40px;
     }
     
     .university-logo {
@@ -441,8 +450,9 @@
     </aside>
     
    <!-- Footer Section -->
-  <div class="footer">
-    <img src="https://shorturl.at/Jckrh" class="university-logo" alt="University Logo">
+   <footer id="contact" class="footer">
+    <div class="footer-content">
+    <img src="images/UniLogo.png" class="university-logo" alt="University Logo">
     <div class="contact">
       <p><strong>LIM EN DHONG</strong><br><br>
       A23CS0239<br>
@@ -464,11 +474,11 @@
       Faculty of Computing UTM<br>
       yeomin@graduate.utm.my</p>
     </div>
-  </div>
-
+  </div>  
   <!-- Bottom Footer -->
   <div class="bottom-footer">
     <div>&copy; Web Prog Assignment 2: Personal Page by Group BlaBlaBla</div>
   </div>
+</footer>
 </body>
 </html>
