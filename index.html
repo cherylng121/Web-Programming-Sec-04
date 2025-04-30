@@ -1,208 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filipe Campante</title>
-    <style>
-        /* Global Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        
-        body {
-            background-color: #f5f5f5;
-        }
-        
-        /* Grid Layout */
-        .container {
-            display: grid;
-            grid-template-rows: auto auto;
-            min-height: 100vh;
-        }
-        
-        /* Header Section with Banner */
-        .header {
-            position: relative;
-            width: 100%;
-            height: 370px;
-            overflow: hidden;
-        }
-        
-        .header-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        /* Professor Title Overlay */
-        .professor-title {
-            position: absolute;
-            top: 130px;
-            left: 50px;
-            color: #0066b3;
-            z-index: 10;
-        }
-        
-        .professor-title h1 {
-            font-size: 38px;
-            font-weight: normal;
-            margin-bottom: 10px;
-        }
-        
-        .professor-title p {
-            font-size: 20px;
-            color: #4a6a8a;
-            line-height: 1.5;
-        }
-        
-        /* Language Selector */
-        .language-selector {
-            position: absolute;
-            top: 85px;
-            right: 15px;
-            background-color: white;
-            border: 1px solid #ddd;
-            padding: 5px 15px;
-            border-radius: 5px;
-            font-size: 16px;
-            z-index: 100;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Page</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; color: #333; }
 
-        .language-selector::after {
-            content: '▼';
-            margin-left: 5px;
-            font-size: 12px;
-        }
-        
-        /* Navigation Bar */
-        .nav-bar {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            background-color: rgba(240, 240, 240, 0.7);
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .main-nav {
-            display: flex;
-            align-items: center;
-            padding: 15px 0;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin: 0 20px;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: #0066b3;
-            font-size: 18px;
-            padding: 10px 0;
-            font-weight: normal;
-        }
-        
-        .nav-links a.active {
-            border-bottom: 3px solid #0066b3;
-        }
-        
-        .search-icon {
-            font-size: 18px;
-            color: #0066b3;
-            margin-left: 20px;
-        }
-        
-        /* Content Section */
-        .content {
-            display: grid;
-            grid-template-columns: 65% 35%;
-            max-width: 1200px;
-            margin: 80px auto;
-            gap: 30px;
-            padding: 0 20px;
-        }
-        
-        .bio-text {
-            color: #333;
-            line-height: 1.7;
-            font-size: 16px;
-            text-align: center;
-        }
-        
-        .bio-text .name {
-            color: #0066b3;
-            font-size: 32px;
-            font-weight: normal;
-            display: inline;
-        }
-        
-        .bio-text p {
-            text-align: justify;
-            max-width: 95%;
-            margin: 0 auto;
-        }
-        
-        .profile-image {
-            width: 100%;
-            height: auto;
-            max-height: 450px;
-            object-fit: cover;
-            border-radius: 2px;
-        }
-    </style>
+    .header { background: url('https://shorturl.at/LjXtI') center/cover no-repeat; height: 400px; }
+
+    .main-content { display: flex; padding: 50px; align-items: center; justify-content: flex-end; }
+    .main-content img.profile { width: 250px; height: auto; margin-left: 50px; }
+    .main-text { flex: 2; font-size: 1.3em; line-height: 2em; text-align: right; }
+    .main-text strong { color: #0056b3; font-size: 1.5em; }
+
+    .footer { 
+      display: flex; 
+      background-color: #780f40; 
+      color: white; 
+      padding: 100px 50px;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 18px;
+    }
+    .footer img.university-logo { 
+      width: 340px; 
+      height: auto;
+      margin-right: 60px;
+    }
+    .contact {
+      text-align: center;
+      margin: 0 40px;
+    }
+   
+    .bottom-footer { display: flex; background-color: #333; color: white; padding: 10px 50px; font-size: 12px; }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header with Background Image and Navigation -->
-        <header class="header">
-            <img src="Banner.png" alt="Congressional Building in Brazil with crowds" class="header-image">
-            
-            <!-- Professor Title Overlay -->
-            <div class="professor-title">
-                <h1>Filipe Campante</h1>
-                <p>Bloomberg Distinguished Professor<br>Johns Hopkins University</p>
-            </div>
-            
-            <!-- Language Selector -->
-            <div class="language-selector">
-                English
-            </div>
-            
-            <!-- Navigation Bar -->
-            <nav class="nav-bar">
-                <div class="main-nav">
-                    <ul class="nav-links">
-                        <li><a href="#" class="active">Home</a></li>
-                        <li><a href="#">Bio</a></li>
-                        <li><a href="#">Research</a></li>
-                        <li><a href="#">Books</a></li>
-                        <li><a href="#">Other Writing</a></li>
-                    </ul>
-                    <div class="search-icon">🔍</div>
-                </div>
-            </nav>
-        </header>
-        
-        <!-- Main Content -->
-        <section class="content">
-            <div class="bio-text">
-                <div class="name">Filipe R. Campante</div>
-                <p> is Bloomberg Distinguished Professor at Johns Hopkins University (SAIS and Carey Business School). He is interested in political economy, development economics, and urban/regional issues. His research looks at what constrains politicians and policy makers beyond formal checks and balances: cultural norms, institutions, media, political protest. In particular, it has focused on how these informal constraints are affected by the spatial distribution of people and economic activity, by access to information, by the evolution of cultural norms, and by the structure of the economy. He tries to answer these aggregate questions — what happens to countries or states or cities — with an applied microeconomic approach.</p>
-            </div>
-            <div class="profile-image-container">
-                <img src="profilePic.jpg" alt="Filipe Campante Profile Photo" class="profile-image">
-            </div>
-        </section>
+
+  <!-- Header -->
+  <div class="header">
+    <h1 style="color: white; text-align: center; padding-top: 150px; font-family: 'Times New Roman', Times, serif; font-size: 3em;">Welcome to Group BlaBlaBla's Personal Page</h1>
+  </div>
+  
+
+  <!-- Main Content Section -->
+  <div class="main-content">
+    <div class="main-text">
+      <p><strong>Lim En Dhong</strong>, also known as <strong>LED</strong>, is a Computer Science student at Universiti Teknologi Malaysia. She is from Kedah and is majoring in Computer Networks and Security. She is passionate about networking, cybersecurity and web development. Recently, she started learning web design to improve her frontend skills. Besides tech, she also enjoys listening to music and reading novel in her free time.</p>
     </div>
+    <img src="https://shorturl.at/1l5k4" alt="Lim En Dhong" class="profile">
+  </div>
+
+  <hr style="width: 80%; margin: 50px auto; border: 1px solid #ccc;">
+
+  <!-- Friend 1 Section -->
+<div class="main-content">
+  <div class="main-text">
+    <p><strong>Friend One Name</strong> is an enthusiastic student focused on artificial intelligence and machine learning. He spends his time exploring Python-based tools and developing smart solutions for real-world problems.</p>
+  </div>
+  <img src="friend1_image_url_here" alt="Friend One" class="profile">
+</div>
+
+<hr style="width: 80%; margin: 50px auto; border: 1px solid #ccc;">
+
+<!-- Friend 2 Section -->
+<div class="main-content">
+  <div class="main-text">
+    <p><strong>Friend Two Name</strong> has a deep interest in software engineering and mobile app development. He's always testing new frameworks and loves building innovative applications using Flutter and Firebase.</p>
+  </div>
+  <img src="friend2_image_url_here" alt="Friend Two" class="profile">
+</div>
+
+<!-- Shared Interests Section -->
+<div style="background: linear-gradient(to right, #fefcea, #f1da36); padding: 60px 40px;">
+  <h2 style="text-align: center; font-size: 2.5em; color: #222; margin-bottom: 40px;">Our Common Interests</h2>
+
+  <!-- Food Section -->
+  <div style="margin-bottom: 40px;">
+    <h3 style="text-align: center; font-size: 1.8em; color: #444; margin-bottom: 20px;">Food</h3>
+    <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+      <img src="https://shorturl.at/EF4db" alt="Favorite Food 1" style="width: 300px; height: auto; border-radius: 10px;">
+      <img src="https://shorturl.at/V9Gdb" alt="Favorite Food 2" style="width: 300px; height: auto; border-radius: 10px;">
+    </div>
+  </div>
+
+  <hr style="width: 60%; margin: 40px auto; border: 1px solid #aaa;">
+
+  <!-- Book Section -->
+  <div style="margin-bottom: 40px;">
+    <h3 style="text-align: center; font-size: 1.8em; color: #444; margin-bottom: 20px;">Books</h3>
+    <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+      <img src="https://shorturl.at/7gCK4" alt="Favorite Book 1" style="width: 300px; height: auto; border-radius: 10px;">
+      <img src="https://shorturl.at/aG3fm" alt="Favorite Book 2" style="width: 300px; height: auto; border-radius: 10px;">
+    </div>
+  </div>
+
+  <hr style="width: 60%; margin: 40px auto; border: 1px solid #aaa;">
+
+    <!-- Movie Section -->
+  <div style="margin-bottom: 40px;">
+    <h3 style="text-align: center; font-size: 1.8em; color: #444; margin-bottom: 20px;">Movies</h3>
+    <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+      <img src="https://shorturl.at/VEXUl" alt="Favorite Movie 1" style="width: 300px; height: auto; border-radius: 10px;">
+      <img src="https://shorturl.at/j621L" alt="Favorite Movie 2" style="width: 300px; height: auto; border-radius: 10px;">
+    </div>
+  </div>
+
+  <hr style="width: 60%; margin: 40px auto; border: 1px solid #aaa;">
+
+  <!-- Hobby Section -->
+  <div>
+    <h3 style="text-align: center; font-size: 1.8em; color: #444; margin-bottom: 20px;">Hobbies</h3>
+    <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+      <img src="https://shorturl.at/4YYmD" alt="Favorite Hobby 1" style="width: 300px; height: auto; border-radius: 10px;">
+      <img src="https://shorturl.at/WtvFY" alt="Favorite Hobby 2" style="width: 300px; height: auto; border-radius: 10px;">
+    </div>
+  </div>
+</div>
+
+  <!-- Footer Section -->
+  <div class="footer">
+    <img src="https://shorturl.at/Jckrh" class="university-logo" alt="University Logo">
+    <div class="contact">
+      <p><strong>LIM EN DHONG</strong><br><br>
+      A23CS0239<br>
+      Year 2 Network & Security<br>
+      Faculty of Computing UTM<br>
+      limdhong@graduate.utm.my</p>
+    </div>
+    <div class="contact">
+      <p><strong>NG JIN EN</strong><br><br>
+      A23CS0146<br>
+      Year 2 Network & Security<br>
+      Faculty of Computing UTM<br>
+      ngjinen@graduate.utm.my</p>
+    </div>
+    <div class="contact">
+      <p><strong>YEO WERN MIN</strong><br><br>
+      A23CS0285<br>
+      Year 2 Network & Security<br>
+      Faculty of Computing UTM<br>
+      yeomin@graduate.utm.my</p>
+    </div>
+  </div>
+
+  <!-- Bottom Footer -->
+  <div class="bottom-footer">
+    <div>&copy; Web Prog Assignment 2: Personal Page by Group BlaBlaBla</div>
+  </div>
+
 </body>
 </html>
