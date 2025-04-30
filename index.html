@@ -5,152 +5,425 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Personal Page</title>
   <style>
-    body { margin: 0; font-family: Arial, sans-serif; color: #333; }
+    /* General styling for the whole page */
+    body { 
+      margin: 0; 
+      font-family: Arial, sans-serif; 
+      color: #333; 
+    }
 
-    .header { background: url('https://shorturl.at/LjXtI') center/cover no-repeat; height: 400px; }
+    /* CSS Grid layout for the main page structure */
+    .grid-container {
+      display: grid;
+      grid-template-areas:
+        "header header header"
+        "left-menu content right-menu"
+        "footer footer footer";
+      grid-template-columns: 1fr 3fr 1fr;
+      grid-template-rows: auto 1fr auto;
+      min-height: 100vh;
+    }
 
-    .main-content { display: flex; padding: 50px; align-items: center; justify-content: flex-end; }
-    .main-content img.profile { width: 250px; height: auto; margin-left: 50px; }
-    .main-text { flex: 2; font-size: 1.3em; line-height: 2em; text-align: right; }
-    .main-text strong { color: #0056b3; font-size: 1.5em; }
-
-    .footer { 
-      display: flex; 
-      background-color: #780f40; 
-      color: white; 
-      padding: 100px 50px;
-      justify-content: center;
+    /* Header area styling */
+    .header { 
+      grid-area: header;
+      background: url('https://shorturl.at/LjXtI') center/cover no-repeat; 
+      height: 400px;
+      display: flex;
       align-items: center;
-      gap: 40px;
+      justify-content: center;
+      text-align: center;
+    }
+    
+    .header h1 {
+      color: white;
+      font-family: 'Times New Roman', Times, serif; 
+      font-size: 3em;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    /* Left menu styling */
+    .left-menu {
+      grid-area: left-menu;
+      background-color: #f8f8f8;
+      padding: 20px;
+      border-right: 1px solid #eee;
+    }
+    
+    .menu-section {
+      margin-bottom: 30px;
+    }
+    
+    .menu-section h3 {
+      color: #780f40;
+      border-bottom: 2px solid #780f40;
+      padding-bottom: 10px;
+    }
+    
+    .menu-section ul {
+      list-style-type: none;
+      padding-left: 10px;
+    }
+    
+    .menu-section li {
+      margin-bottom: 10px;
+    }
+    
+    .menu-section a {
+      text-decoration: none;
+      color: #333;
+      transition: color 0.3s;
+    }
+    
+    .menu-section a:hover {
+      color: #0056b3;
+    }
+
+    /* Right menu styling */
+    .right-menu {
+      grid-area: right-menu;
+      background-color: #f8f8f8;
+      padding: 20px;
+      border-left: 1px solid #eee;
+    }
+    
+    .quick-links h3 {
+      color: #780f40;
+      border-bottom: 2px solid #780f40;
+      padding-bottom: 10px;
+    }
+    
+    .quick-links ul {
+      list-style-type: none;
+      padding-left: 10px;
+    }
+    
+    .quick-links li {
+      margin-bottom: 10px;
+    }
+    
+    .social-links {
+      margin-top: 40px;
+    }
+    
+    .social-links h3 {
+      color: #780f40;
+      border-bottom: 2px solid #780f40;
+      padding-bottom: 10px;
+    }
+
+    /* Main content styling */
+    .content {
+      grid-area: content;
+      padding: 30px;
+    }
+
+    .profile-section {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+      margin-bottom: 50px;
+      align-items: center;
+    }
+    
+    .profile-image {
+      width: 100%;
+      max-width: 250px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .profile-text strong {
+      color: #0056b3;
+      font-size: 1.5em;
+    }
+    
+    .profile-text {
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+
+    /* Shared interests section styling */
+    .interests-section {
+      background: linear-gradient(to right, #fefcea, #f1da36);
+      padding: 40px;
+      border-radius: 10px;
+      margin-top: 30px;
+    }
+    
+    .interests-section h2 {
+      text-align: center;
+      font-size: 2.2em;
+      color: #222;
+      margin-bottom: 30px;
+    }
+    
+    .interest-category {
+      margin-bottom: 40px;
+    }
+    
+    .interest-category h3 {
+      text-align: center;
+      font-size: 1.8em;
+      color: #444;
+      margin-bottom: 20px;
+    }
+    
+    .interest-images {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      justify-items: center;
+    }
+    
+    .interest-images img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    
+    .interest-images img:hover {
+      transform: scale(1.05);
+    }
+    
+    .divider {
+      width: 60%;
+      margin: 40px auto;
+      border: 1px solid #aaa;
+    }
+
+    /* Footer styling */
+    .footer {
+      grid-area: footer;
+      background-color: #780f40;
+      color: white;
+      padding: 50px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
       font-family: 'Times New Roman', Times, serif;
       font-size: 18px;
     }
-    .footer img.university-logo { 
-      width: 340px; 
+    
+    .university-logo {
+      max-width: 300px;
       height: auto;
-      margin-right: 60px;
+      justify-self: center;
+      align-self: center;
     }
+    
     .contact {
       text-align: center;
-      margin: 0 40px;
     }
-   
-    .bottom-footer { display: flex; background-color: #333; color: white; padding: 10px 50px; font-size: 12px; }
+    
+    .contact strong {
+      font-size: 1.2em;
+      margin-bottom: 15px;
+      display: block;
+    }
+    
+    .bottom-footer {
+      grid-area: footer;
+      margin-top: auto;
+      background-color: #333;
+      color: white;
+      padding: 10px 50px;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    /* Responsive design adjustments */
+    @media (max-width: 992px) {
+      .grid-container {
+        grid-template-areas:
+          "header"
+          "left-menu"
+          "content"
+          "right-menu"
+          "footer";
+        grid-template-columns: 1fr;
+      }
+      
+      .profile-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .profile-image {
+        margin: 0 auto;
+      }
+    }
   </style>
 </head>
 <body>
-
-  <!-- Header -->
-  <div class="header">
-    <h1 style="color: white; text-align: center; padding-top: 150px; font-family: 'Times New Roman', Times, serif; font-size: 3em;">Welcome to Group BlaBlaBla's Personal Page</h1>
+  <!-- Main grid container for the entire page layout -->
+  <div class="grid-container">
+    <!-- Header Section -->
+    <header class="header">
+      <h1>Welcome to Group BlaBlaBla's Personal Page</h1>
+    </header>
+    
+    <!-- Left Menu Navigation -->
+    <nav class="left-menu">
+      <div class="menu-section">
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="#profile-led">Lim En Dhong</a></li>
+          <li><a href="#profile-friend1">Friend One</a></li>
+          <li><a href="#profile-friend2">Friend Two</a></li>
+          <li><a href="#interests">Our Interests</a></li>
+        </ul>
+      </div>
+      
+      <div class="menu-section">
+        <h3>Academic Links</h3>
+        <ul>
+          <li><a href="https://www.utm.my">UTM Website</a></li>
+          <li><a href="https://fc.utm.my">Faculty of Computing</a></li>
+          <li><a href="#">Student Portal</a></li>
+          <li><a href="#">Academic Calendar</a></li>
+        </ul>
+      </div>
+    </nav>
+    
+    <!-- Main Content Area -->
+    <main class="content">
+      <!-- First Profile Section -->
+      <section id="profile-led" class="profile-section">
+        <div class="profile-text">
+          <p><strong>Lim En Dhong</strong>, also known as <strong>LED</strong>, is a Computer Science student at Universiti Teknologi Malaysia. She is from Kedah and is majoring in Computer Networks and Security. She is passionate about networking, cybersecurity and web development. Recently, she started learning web design to improve her frontend skills. Besides tech, she also enjoys listening to music and reading novel in her free time.</p>
+        </div>
+        <img src="https://shorturl.at/1l5k4" alt="Lim En Dhong" class="profile-image">
+      </section>
+      
+      <hr style="width: 80%; margin: 30px auto; border: 1px solid #ccc;">
+      
+      <!-- Second Profile Section -->
+      <section id="profile-friend1" class="profile-section">
+        <div class="profile-text">
+          <p><strong>Ng Jin En</strong> is an enthusiastic student focused on artificial intelligence and machine learning. He spends his time exploring Python-based tools and developing smart solutions for real-world problems.</p>
+        </div>
+        <img src="/api/placeholder/250/250" alt="Ng Jin En" class="profile-image">
+      </section>
+      
+      <hr style="width: 80%; margin: 30px auto; border: 1px solid #ccc;">
+      
+      <!-- Third Profile Section -->
+      <section id="profile-friend2" class="profile-section">
+        <div class="profile-text">
+          <p><strong>Yeo Wern Min</strong> has a deep interest in software engineering and mobile app development. He's always testing new frameworks and loves building innovative applications using Flutter and Firebase.</p>
+        </div>
+        <img src="/api/placeholder/250/250" alt="Yeo Wern Min" class="profile-image">
+      </section>
+      
+      <!-- Shared Interests Section -->
+      <section id="interests" class="interests-section">
+        <h2>Our Common Interests</h2>
+        
+        <!-- Food Section -->
+        <div class="interest-category">
+          <h3>Food</h3>
+          <div class="interest-images">
+            <img src="https://shorturl.at/EF4db" alt="Favorite Food 1">
+            <img src="https://shorturl.at/V9Gdb" alt="Favorite Food 2">
+          </div>
+        </div>
+        
+        <hr class="divider">
+        
+        <!-- Book Section -->
+        <div class="interest-category">
+          <h3>Books</h3>
+          <div class="interest-images">
+            <img src="https://shorturl.at/7gCK4" alt="Favorite Book 1">
+            <img src="https://shorturl.at/aG3fm" alt="Favorite Book 2">
+          </div>
+        </div>
+        
+        <hr class="divider">
+        
+        <!-- Movie Section -->
+        <div class="interest-category">
+          <h3>Movies</h3>
+          <div class="interest-images">
+            <img src="https://shorturl.at/VEXUl" alt="Favorite Movie 1">
+            <img src="https://shorturl.at/j621L" alt="Favorite Movie 2">
+          </div>
+        </div>
+        
+        <hr class="divider">
+        
+        <!-- Hobby Section -->
+        <div class="interest-category">
+          <h3>Hobbies</h3>
+          <div class="interest-images">
+            <img src="https://shorturl.at/4YYmD" alt="Favorite Hobby 1">
+            <img src="https://shorturl.at/WtvFY" alt="Favorite Hobby 2">
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <!-- Right Menu Sidebar -->
+    <aside class="right-menu">
+      <div class="quick-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#">Recent Projects</a></li>
+          <li><a href="#">Assignments</a></li>
+          <li><a href="#">Study Resources</a></li>
+          <li><a href="#">Tech News</a></li>
+        </ul>
+      </div>
+      
+      <div class="social-links">
+        <h3>Connect With Us</h3>
+        <ul>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Twitter</a></li>
+        </ul>
+      </div>
+    </aside>
+    
+    <!-- Footer Section -->
+    <footer class="footer">
+      <img src="https://shorturl.at/Jckrh" class="university-logo" alt="University Logo">
+      
+      <div class="contact">
+        <strong>LIM EN DHONG</strong>
+        <p>A23CS0239<br>
+        Year 2 Network & Security<br>
+        Faculty of Computing UTM<br>
+        limdhong@graduate.utm.my</p>
+      </div>
+      
+      <div class="contact">
+        <strong>NG JIN EN</strong>
+        <p>A23CS0146<br>
+        Year 2 Network & Security<br>
+        Faculty of Computing UTM<br>
+        ngjinen@graduate.utm.my</p>
+      </div>
+      
+      <div class="contact">
+        <strong>YEO WERN MIN</strong>
+        <p>A23CS0285<br>
+        Year 2 Network & Security<br>
+        Faculty of Computing UTM<br>
+        yeomin@graduate.utm.my</p>
+      </div>
+      
+      <!-- Bottom Footer -->
+      <div class="bottom-footer">
+        <div>&copy; Web Prog Assignment 2: Personal Page by Group BlaBlaBla</div>
+      </div>
+    </footer>
   </div>
-  
-
-  <!-- Main Content Section -->
-  <div class="main-content">
-    <div class="main-text">
-      <p><strong>Lim En Dhong</strong>, also known as <strong>LED</strong>, is a Computer Science student at Universiti Teknologi Malaysia. She is from Kedah and is majoring in Computer Networks and Security. She is passionate about networking, cybersecurity and web development. Recently, she started learning web design to improve her frontend skills. Besides tech, she also enjoys listening to music and reading novel in her free time.</p>
-    </div>
-    <img src="https://shorturl.at/1l5k4" alt="Lim En Dhong" class="profile">
-  </div>
-
-  <hr style="width: 80%; margin: 50px auto; border: 1px solid #ccc;">
-
-  <!-- Friend 1 Section -->
-<div class="main-content">
-  <div class="main-text">
-    <p><strong>Friend One Name</strong> is an enthusiastic student focused on artificial intelligence and machine learning. He spends his time exploring Python-based tools and developing smart solutions for real-world problems.</p>
-  </div>
-  <img src="friend1_image_url_here" alt="Friend One" class="profile">
-</div>
-
-<hr style="width: 80%; margin: 50px auto; border: 1px solid #ccc;">
-
-<!-- Friend 2 Section -->
-<div class="main-content">
-  <div class="main-text">
-    <p><strong>Friend Two Name</strong> has a deep interest in software engineering and mobile app development. He's always testing new frameworks and loves building innovative applications using Flutter and Firebase.</p>
-  </div>
-  <img src="friend2_image_url_here" alt="Friend Two" class="profile">
-</div>
-
-<!-- Shared Interests Section -->
-<div style="background: linear-gradient(to right, #fefcea, #f1da36); padding: 60px 40px;">
-  <h2 style="text-align: center; font-size: 2.5em; color: #222; margin-bottom: 40px;">Our Common Interests</h2>
-
-  <!-- Food Section -->
-  <div style="margin-bottom: 40px;">
-    <h3 style="text-align: center; font-size: 1.8em; color: #444; margin-bottom: 20px;">Food</h3>
-    <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
-      <img src="https://shorturl.at/EF4db" alt="Favorite Food 1" style="width: 300px; height: auto; border-radius: 10px;">
-      <img src="https://shorturl.at/V9Gdb" alt="Favorite Food 2" style="width: 300px; height: auto; border-radius: 10px;">
-    </div>
-  </div>
-
-  <hr style="width: 60%; margin: 40px auto; border: 1px solid #aaa;">
-
-  <!-- Book Section -->
-  <div style="margin-bottom: 40px;">
-    <h3 style="text-align: center; font-size: 1.8em; color: #444; margin-bottom: 20px;">Books</h3>
-    <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
-      <img src="https://shorturl.at/7gCK4" alt="Favorite Book 1" style="width: 300px; height: auto; border-radius: 10px;">
-      <img src="https://shorturl.at/aG3fm" alt="Favorite Book 2" style="width: 300px; height: auto; border-radius: 10px;">
-    </div>
-  </div>
-
-  <hr style="width: 60%; margin: 40px auto; border: 1px solid #aaa;">
-
-    <!-- Movie Section -->
-  <div style="margin-bottom: 40px;">
-    <h3 style="text-align: center; font-size: 1.8em; color: #444; margin-bottom: 20px;">Movies</h3>
-    <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
-      <img src="https://shorturl.at/VEXUl" alt="Favorite Movie 1" style="width: 300px; height: auto; border-radius: 10px;">
-      <img src="https://shorturl.at/j621L" alt="Favorite Movie 2" style="width: 300px; height: auto; border-radius: 10px;">
-    </div>
-  </div>
-
-  <hr style="width: 60%; margin: 40px auto; border: 1px solid #aaa;">
-
-  <!-- Hobby Section -->
-  <div>
-    <h3 style="text-align: center; font-size: 1.8em; color: #444; margin-bottom: 20px;">Hobbies</h3>
-    <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
-      <img src="https://shorturl.at/4YYmD" alt="Favorite Hobby 1" style="width: 300px; height: auto; border-radius: 10px;">
-      <img src="https://shorturl.at/WtvFY" alt="Favorite Hobby 2" style="width: 300px; height: auto; border-radius: 10px;">
-    </div>
-  </div>
-</div>
-
-  <!-- Footer Section -->
-  <div class="footer">
-    <img src="https://shorturl.at/Jckrh" class="university-logo" alt="University Logo">
-    <div class="contact">
-      <p><strong>LIM EN DHONG</strong><br><br>
-      A23CS0239<br>
-      Year 2 Network & Security<br>
-      Faculty of Computing UTM<br>
-      limdhong@graduate.utm.my</p>
-    </div>
-    <div class="contact">
-      <p><strong>NG JIN EN</strong><br><br>
-      A23CS0146<br>
-      Year 2 Network & Security<br>
-      Faculty of Computing UTM<br>
-      ngjinen@graduate.utm.my</p>
-    </div>
-    <div class="contact">
-      <p><strong>YEO WERN MIN</strong><br><br>
-      A23CS0285<br>
-      Year 2 Network & Security<br>
-      Faculty of Computing UTM<br>
-      yeomin@graduate.utm.my</p>
-    </div>
-  </div>
-
-  <!-- Bottom Footer -->
-  <div class="bottom-footer">
-    <div>&copy; Web Prog Assignment 2: Personal Page by Group BlaBlaBla</div>
-  </div>
-
 </body>
 </html>
