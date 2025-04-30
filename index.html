@@ -17,7 +17,7 @@
       display: grid;
       grid-template-areas:
         "header header header"
-        "content content right-menu"
+        "left-menu content right-menu"
         "footer footer footer";
       grid-template-columns: 1fr 2fr 1fr;
       grid-template-rows: auto 1fr auto;
@@ -54,7 +54,7 @@
       top: 0;
       left: 0;
       right: 0;
-      background-color: rgba(120, 15, 64, 0.9);
+      background-color: rgba(120, 15, 64, 0.7); /* Transparent background */
       padding: 15px 0;
       z-index: 10;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
@@ -64,8 +64,8 @@
       display: flex;
       list-style-type: none;
       margin: 0;
-      padding: 0;
-      justify-content: center;
+      padding: 0 40px; /* Add padding to align with the content */
+      justify-content: flex-start; /* Align items to the left */
       gap: 40px;
     }
     
@@ -84,6 +84,14 @@
       text-decoration: none;
     }
 
+    /* Left menu styling */
+    .left-menu {
+      grid-area: left-menu;
+      background-color: #f8f8f8;
+      padding: 20px;
+      border-right: 1px solid #eee;
+    }
+    
     /* Right menu styling */
     .right-menu {
       grid-area: right-menu;
@@ -123,10 +131,7 @@
 
     /* Main content styling */
     .content {
-      display: flex; 
-      padding: 50px; 
-      align-items: center; 
-      justify-content: flex-end;
+      padding: 50px;
       grid-area: content;
     }
 
@@ -144,16 +149,18 @@
       height: auto;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      justify-self: end;
+    }
+    
+    .profile-text {
+      text-align: left; /* Align text to the left */
+      font-size: 1.2em;
+      line-height: 1.6;
     }
     
     .profile-text strong {
       color: #0056b3;
       font-size: 1.5em;
-    }
-    
-    .profile-text {
-      font-size: 1.2em;
-      line-height: 1.6;
     }
 
     /* Shared interests section styling */
@@ -210,6 +217,7 @@
 
     /* Footer styling */
     .footer {
+      grid-area: footer;
       display: flex; 
       background-color: #780f40; 
       color: white; 
@@ -219,13 +227,13 @@
       gap: 40px;
       font-family: 'Times New Roman', Times, serif;
       font-size: 18px;
+      flex-wrap: wrap;
     }
     
     .university-logo {
       max-width: 300px;
       height: auto;
-      justify-self: center;
-      align-self: center;
+      margin-right: 40px;
     }
     
     .contact {
@@ -239,13 +247,12 @@
     }
     
     .bottom-footer {
-      grid-area: footer;
-      margin-top: auto;
       background-color: #333;
       color: white;
       padding: 10px 50px;
       font-size: 12px;
       text-align: center;
+      width: 100%;
     }
 
     /* Responsive design adjustments */
@@ -253,6 +260,7 @@
       .grid-container {
         grid-template-areas:
           "header"
+          "left-menu"
           "content"
           "right-menu"
           "footer";
@@ -284,6 +292,16 @@
         padding: 5px 10px;
         font-size: 14px;
       }
+
+      .footer {
+        flex-direction: column;
+        padding: 50px 20px;
+      }
+
+      .university-logo {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
     }
   </style>
 </head>
@@ -292,7 +310,7 @@
   <div class="grid-container">
     <!-- Header Section with Top Navigation -->
     <header class="header">
-      <!-- Top navigation bar -->
+      <!-- Top navigation bar with transparent background -->
       <nav class="top-nav">
         <ul>
           <li><a href="#profile-led">Lim En Dhong</a></li>
@@ -308,6 +326,29 @@
       </div>
     </header>
     
+    <!-- Left Menu Sidebar -->
+    <aside class="left-menu">
+      <div class="menu-section">
+        <h3>Academic Links</h3>
+        <ul>
+          <li><a href="https://www.utm.my">UTM Website</a></li>
+          <li><a href="https://fc.utm.my">Faculty of Computing</a></li>
+          <li><a href="#">Student Portal</a></li>
+          <li><a href="#">Academic Calendar</a></li>
+        </ul>
+      </div>
+      
+      <div class="menu-section">
+        <h3>Connect With Us</h3>
+        <ul>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Twitter</a></li>
+        </ul>
+      </div>
+    </aside>
+    
     <!-- Main Content Area -->
     <main class="content">
       <!-- First Profile Section -->
@@ -315,7 +356,7 @@
         <div class="profile-text">
           <p><strong>Lim En Dhong</strong>, also known as <strong>LED</strong>, is a Computer Science student at Universiti Teknologi Malaysia. She is from Kedah and is majoring in Computer Networks and Security. She is passionate about networking, cybersecurity and web development. Recently, she started learning web design to improve her frontend skills. Besides tech, she also enjoys listening to music and reading novel in her free time.</p>
         </div>
-        <img src="images/EnDhong.jpg" alt="Lim En Dhong" class="profile-image">
+        <img src="https://shorturl.at/1l5k4" alt="Lim En Dhong" class="profile-image">
       </section>
       
       <hr style="width: 80%; margin: 30px auto; border: 1px solid #ccc;">
@@ -346,8 +387,8 @@
         <div class="interest-category">
           <h3>Food</h3>
           <div class="interest-images">
-            <img src="images/Food1.jpg" alt="Favorite Food 1">
-            <img src="images/Food2.jpg" alt="Favorite Food 2">
+            <img src="https://shorturl.at/EF4db" alt="Favorite Food 1">
+            <img src="https://shorturl.at/V9Gdb" alt="Favorite Food 2">
           </div>
         </div>
         
@@ -357,7 +398,7 @@
         <div class="interest-category">
           <h3>Books</h3>
           <div class="interest-images">
-            <img src="images/Book1.jpg" alt="Favorite Book 1">
+            <img src="https://shorturl.at/7gCK4" alt="Favorite Book 1">
             <img src="https://shorturl.at/aG3fm" alt="Favorite Book 2">
           </div>
         </div>
@@ -397,26 +438,6 @@
           <li><a href="#">Tech News</a></li>
         </ul>
       </div>
-      
-      <div class="menu-section">
-        <h3>Connect With Us</h3>
-        <ul>
-          <li><a href="#">GitHub</a></li>
-          <li><a href="#">LinkedIn</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">Twitter</a></li>
-        </ul>
-      </div>
-      
-      <div class="menu-section">
-        <h3>Academic Links</h3>
-        <ul>
-          <li><a href="https://www.utm.my">UTM Website</a></li>
-          <li><a href="https://fc.utm.my">Faculty of Computing</a></li>
-          <li><a href="#">Student Portal</a></li>
-          <li><a href="#">Academic Calendar</a></li>
-        </ul>
-      </div>
     </aside>
     
     <!-- Footer Section -->
@@ -447,7 +468,7 @@
         yeomin@graduate.utm.my</p>
       </div>
       
-      <!-- Bottom Footer -->
+      <!-- Bottom Footer with copyright info -->
       <div class="bottom-footer">
         <div>&copy; Web Prog Assignment 2: Personal Page by Group BlaBlaBla</div>
       </div>
