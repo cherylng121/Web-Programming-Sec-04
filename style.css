@@ -1,0 +1,92 @@
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Grid Layout */
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "left-menu content right-menu"
+        "footer footer footer";
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+/* Header Styling */
+.header {
+    grid-area: header;
+    background-color: #4A90E2;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+.header img {
+    max-height: 100px;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+/* Left Menu */
+.left-menu {
+    grid-area: left-menu;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+.left-menu ul {
+    list-style: none;
+}
+.left-menu li {
+    margin: 10px 0;
+}
+
+/* Right Menu */
+.right-menu {
+    grid-area: right-menu;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+.right-menu ul {
+    list-style: none;
+}
+.right-menu li {
+    margin: 10px 0;
+}
+
+/* Content Area */
+.content {
+    grid-area: content;
+    padding: 20px;
+}
+.profile-img {
+    max-width: 100%;
+    height: auto;
+    margin: 10px 0;
+}
+
+/* Footer */
+.footer {
+    grid-area: footer;
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-areas:
+            "header"
+            "left-menu"
+            "content"
+            "right-menu"
+            "footer";
+        grid-template-columns: 1fr;
+    }
+}
