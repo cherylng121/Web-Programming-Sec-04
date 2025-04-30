@@ -20,17 +20,16 @@
         /* Grid Layout */
         .container {
             display: grid;
-            grid-template-rows: auto auto auto;
+            grid-template-rows: auto auto;
             min-height: 100vh;
         }
         
-        /* Header Section */
+        /* Header Section with Navigation */
         .header {
             position: relative;
             width: 100%;
-            height: 430px;
+            height: 460px;
             overflow: hidden;
-            background-color: #f0f0f0;
         }
         
         .header-image {
@@ -57,50 +56,16 @@
             font-size: 12px;
         }
         
-        /* Name and Title Overlay */
-        .title-overlay {
-            position: absolute;
-            top: 230px;
-            left: 50px;
-            z-index: 10;
-        }
-        
-        .title-overlay h1 {
-            color: #0066b3;
-            font-size: 48px;
-            font-weight: normal;
-            line-height: 1.2;
-        }
-        
-        .title-overlay p {
-            color: #666;
-            font-size: 20px;
-            line-height: 1.4;
-        }
-        
         /* Navigation Bar */
         .nav-bar {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            justify-content: center;
             background-color: rgba(240, 240, 240, 0.7);
-            padding: 15px 50px;
+            padding: 10px 0;
             border-bottom: 1px solid #ddd;
-        }
-        
-        .site-identity {
-            margin-right: auto;
-        }
-        
-        .site-identity h2 {
-            color: #0066b3;
-            font-size: 24px;
-            font-weight: normal;
-        }
-        
-        .site-identity p {
-            color: #666;
-            font-size: 16px;
         }
         
         .main-nav {
@@ -111,6 +76,7 @@
         .nav-links {
             display: flex;
             list-style: none;
+            margin-right: 20px;
         }
         
         .nav-links li {
@@ -131,7 +97,6 @@
         }
         
         .search-icon {
-            margin-left: 20px;
             font-size: 18px;
             color: #0066b3;
         }
@@ -150,7 +115,6 @@
             color: #333;
             line-height: 1.6;
             font-size: 16px;
-            text-align: center;
         }
         
         .bio-text h2 {
@@ -176,7 +140,7 @@
 </head>
 <body>
     <div class="container">
-        <!-- Header with Background Image -->
+        <!-- Header with Background Image and Navigation -->
         <header class="header">
             <img src="Banner.png" alt="Congressional Building in Brazil with crowds" class="header-image">
             
@@ -185,22 +149,20 @@
                 English
             </div>
             
-            <!-- Title Overlay removed as it's already in the image -->
+            <!-- Navigation Bar -->
+            <nav class="nav-bar">
+                <div class="main-nav">
+                    <ul class="nav-links">
+                        <li><a href="#" class="active">Home</a></li>
+                        <li><a href="#">Bio</a></li>
+                        <li><a href="#">Research</a></li>
+                        <li><a href="#">Books</a></li>
+                        <li><a href="#">Other Writing</a></li>
+                    </ul>
+                    <div class="search-icon">🔍</div>
+                </div>
+            </nav>
         </header>
-        
-        <!-- Navigation Bar without site identity -->
-        <nav class="nav-bar">
-            <div class="main-nav">
-                <ul class="nav-links">
-                    <li><a href="#" class="active">Home</a></li>
-                    <li><a href="#">Bio</a></li>
-                    <li><a href="#">Research</a></li>
-                    <li><a href="#">Books</a></li>
-                    <li><a href="#">Other Writing</a></li>
-                </ul>
-                <div class="search-icon">🔍</div>
-            </div>
-        </nav>
         
         <!-- Main Content -->
         <section class="content">
